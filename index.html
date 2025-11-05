@@ -227,6 +227,70 @@
             color: #2f2c79;
         }
 
+        /* Estilos para a seção de confirmação */
+        #rsvp {
+            background-color: #f9f9f9;
+            padding: 60px 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #171a4a;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            background-color: #171a4a;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin: 30px auto 0;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2f2c79;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
         /* Versão para mobile */
         @media (max-width: 768px) {
             .logo-container {
@@ -258,6 +322,10 @@
 
             .photo-slider {
                 height: 300px;
+            }
+
+            .rsvp-form {
+                padding: 20px;
             }
         }
     </style>
@@ -348,7 +416,33 @@
         </div>
     </section>
 
-   
+    <!-- Nova seção de confirmação de presença -->
+    <section id="rsvp">
+        <h2>Confirmação de Presença</h2>
+        <div class="rsvp-form">
+            <p style="text-align: center; margin-bottom: 30px;">
+                Sua presença é muito importante para nós! Por favor, confirme sua participação preenchendo os dados abaixo.
+            </p>
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone/WhatsApp</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <button type="submit" class="submit-btn">Confirmar Presença</button>
+            </form>
+            <div class="success-message" id="successMessage">
+                Obrigado por confirmar sua presença! Estamos ansiosos para celebrar com você.
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p style="font-weight: bold;">TM Web Design</p>
@@ -393,8 +487,6 @@
         // Iniciar slideshow
         showSlide(0);
         setInterval(nextSlide, 3000);
-
-
 
         // Controles de música
         const music = document.getElementById('bgMusic');
@@ -453,18 +545,41 @@
             document.body.removeEventListener('click', firstInteraction);
         });
 
+        // Formulário de confirmação de presença
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                timestamp: new Date().toLocaleString('pt-BR')
+            };
+            
+            // Envia os dados para o Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbygUbaV5p4KZ0WM_y8YyD8KvpNeuKxdB30FDUC184JVP1_iLNDYiPnjtXhanjQbYwNT4Q/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                // Mostra mensagem de sucesso
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('rsvpForm').reset();
+                
+                // Esconde a mensagem após 5 segundos
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            })
+            .catch(error => {
+                console.error('Erro ao enviar dados:', error);
+                alert('Ocorreu um erro ao enviar sua confirmação. Por favor, tente novamente.');
+            });
+        });
     </script>
 </body>
-
-
 </html>
-
-
-
-
-
-
-
-
-
-
