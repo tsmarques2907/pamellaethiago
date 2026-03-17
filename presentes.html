@@ -1,248 +1,378 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Presentes - Pamella & Thiago</title>
     <style>
-        /* Estilos consistentes com a página principal */
         :root {
             --primary-color: #d4af37;
-            --secondary-color: #8b4513;
+            --secondary-color: #171a4a;
             --accent-color: #f8f8f8;
             --text-color: #333;
         }
 
         body {
-            font-family: 'Playfair Display', serif;
             background-color: var(--accent-color);
             color: var(--text-color);
+            font-family: 'Playfair Display', serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
         }
 
-        /* Estilos do cabeçalho */
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('imagens/casamento.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 50vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 20px;
             text-align: center;
-            color: white;
-            padding: 0 20px;
         }
 
-        .logo-container {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 20px;
-            border: 5px solid #d4af37;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: white;
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        .logo-img {
-            width: 90%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        header h1 {
-            font-size: 2.8rem;
-            /* Tamanho aumentado para ficar igual ao PIX */
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            color: white;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            /* Tamanho aumentado para ficar igual ao PIX */
-            margin-bottom: 20px;
-            font-style: italic;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            color: white;
-        }
-
-        /* Ajuste para mobile */
-        @media (max-width: 768px) {
-            header {
-                height: 40vh;
-            }
-
-            .logo-container {
-                width: 100px;
-                height: 100px;
-                border-width: 3px;
-            }
-
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-        }
-
-        .gift-list-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        section {
             padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        h1 {
-            text-align: center;
-            color: var(--secondary-color);
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-        }
+        h2 { text-align: center; color: var(--secondary-color); font-size: 2.5rem; }
 
-        .gift-grid {
+        /* Grade de Presentes */
+        .gift-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
 
         .gift-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gift-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .gift-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .gift-details {
-            padding: 20px;
-        }
-
-        .gift-title {
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-
-        .gift-price {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .gift-button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             text-align: center;
-            text-decoration: none;
+            transition: transform 0.3s;
         }
 
-        .gift-button:hover {
-            background-color: #b38f2e;
-        }
+        .gift-card:hover { transform: translateY(-10px); }
 
-        footer {
+        .gift-img { width: 100%; height: 220px; object-fit: cover; }
+
+        .gift-info { padding: 20px; }
+
+        .gift-price { color: var(--primary-color); font-weight: bold; font-size: 1.3rem; margin: 10px 0; }
+
+        .gift-btn {
             background-color: var(--secondary-color);
             color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 60px;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
-        @media (max-width: 768px) {
-            .gift-grid {
-                grid-template-columns: 1fr;
-            }
+        .gift-btn:hover { background-color: var(--primary-color); }
 
-            h1 {
-                font-size: 2rem;
-            }
+        /* Estilos do Modal */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.8);
+            justify-content: center; align-items: center;
         }
+
+        .modal-content {
+            background: white; padding: 30px; border-radius: 15px;
+            max-width: 400px; width: 90%; text-align: center; position: relative;
+        }
+
+        .pix-qr { width: 220px; height: 220px; margin: 20px auto; border: 1px solid #ddd; }
+
+        .pix-key-container {
+            background: #f1f1f1; padding: 10px; border-radius: 5px;
+            margin: 15px 0; word-break: break-all; border: 1px dashed var(--primary-color);
+        }
+
+        .copy-btn { background: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="imagens/logo.png" alt="Logo Pamella e Thiago" class="logo-img">
+
+<header>
+    <h1>Lista de Presentes</h1>
+    <p>Pamella & Thiago</p>
+    <a href="index.html" class="back-btn">← Voltar para o início</a>
+</header>
+
+<section>
+    <h2>Escolha um Presente</h2>
+    <div class="gift-list">
+        <div class="gift-card">
+            <img src="Lista/julius.jpeg" alt="Só para não dizer que eu não dei nada" class="gift-img">
+            <div class="gift-info">
+                <h3>Só para não dizer que eu não dei nada</h3>
+                <p class="gift-price">R$ 100,00</p>
+                <button onclick="openPix('Só para não dizer que eu não dei nada')" class="gift-btn">Presentear</button>
+            </div>
         </div>
-        <h1>Pamella & Thiago</h1>
-        <p class="subtitle">23 de Maio de 2026</p>
-    </header>
-    <div class="gift-list-container">
-        <h1>Lista de Presentes</h1>
 
-        <div class="gift-grid">
-            <!-- Item 1 -->
-            <div class="gift-card">
-                <img src="imagens/presente1.jpg" alt="Jantar Romântico" class="gift-image">
-                <div class="gift-details">
-                    <h3 class="gift-title">Jantar Romântico</h3>
-                    <p class="gift-price">R$ 250,00</p>
-                    <a href="pix.html?item=Jantar Romântico&valor=250" class="gift-button">Presentear</a>
-                </div>
+        <div class="gift-card">
+            <img src="Lista/tampao-ouvido.jpg" alt="Tampão de ouvido da 3M para o noivo enquanto a noiva ronca" class="gift-img">
+            <div class="gift-info">
+                <h3>Tampão de ouvido da 3M para o noivo enquanto a noiva ronca </h3>
+                <p class="gift-price">R$ 150,00</p>
+                <button onclick="openPix('Tampão de ouvido da 3M para o noivo enquanto a noiva ronca')" class="gift-btn">Presentear</button>
             </div>
-
-            <!-- Item 2 -->
-            <div class="gift-card">
-                <img src="imagens/presente2.jpg" alt="Conjunto de Panelas" class="gift-image">
-                <div class="gift-details">
-                    <h3 class="gift-title">Conjunto de Panelas</h3>
-                    <p class="gift-price">R$ 380,00</p>
-                    <a href="pix.html?item=Conjunto de Panelas&valor=380" class="gift-button">Presentear</a>
-                </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="gift-card">
-                <img src="imagens/presente3.jpg" alt="Frigobar" class="gift-image">
-                <div class="gift-details">
-                    <h3 class="gift-title">Frigobar</h3>
-                    <p class="gift-price">R$ 1.200,00</p>
-                    <a href="pix.html?item=Frigobar&valor=1200" class="gift-button">Presentear</a>
-                </div>
-            </div>
-
-            <!-- Adicione mais itens conforme necessário -->
         </div>
+
+        <div class="gift-card">
+            <img src="Lista/noiva-atrasada.jpg" alt="Para a noiva não se atrasar" class="gift-img">
+            <div class="gift-info">
+                <h3>Para a noiva não se atrasar</h3>
+                <p class="gift-price">R$ 300,00</p>
+                <button onclick="openPix('Para a noiva não se atrasar')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+		
+		<div class="gift-card">
+            <img src="Lista/coberta de razao.jpg" alt="Cobertor para a Pam estar sempre coberta de razão" class="gift-img">
+            <div class="gift-info">
+                <h3>Cobertor para a Pam estar sempre coberta de razão</h3>
+                <p class="gift-price">R$ 200,00</p>
+                <button onclick="openPix('Cobertor para a Pam estar sempre coberta de razão')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/corte de cabelo.jpg" alt="Corte do cabelo do noivo por 6 meses" class="gift-img">
+            <div class="gift-info">
+                <h3>Corte do cabelo do noivo por 6 meses </h3>
+                <p class="gift-price">R$ 300,00</p>
+                <button onclick="openPix('Corte do cabelo do noivo por 6 meses')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/jaquin.jpeg" alt="Curso de culinária para o noivo" class="gift-img">
+            <div class="gift-info">
+                <h3>Curso de culinária para o noivo</h3>
+                <p class="gift-price">R$ 800,00</p>
+                <button onclick="openPix('Curso de culinária para o noivo')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/rica.jpg" alt="Deus te iluminou e você resolveu ajudar na viagem" class="gift-img">
+            <div class="gift-info">
+                <h3>Deus te iluminou e você resolveu ajudar na viagem</h3>
+                <p class="gift-price">R$ 2.000,00</p>
+                <button onclick="openPix('Deus te iluminou e você resolveu ajudar na viagem')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/cooktop.webp" alt="Cooktop de última geração" class="gift-img">
+            <div class="gift-info">
+                <h3>Cooktop de última geração </h3>
+                <p class="gift-price">R$ 600,00</p>
+                <button onclick="openPix('Cooktop de última geração')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/fila-buffet.avif" alt="Prioridade na fila do buffet" class="gift-img">
+            <div class="gift-info">
+                <h3>Prioridade na fila do buffet</h3>
+                <p class="gift-price">R$ 200,00</p>
+                <button onclick="openPix('Prioridade na fila do buffet')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+		
+		<div class="gift-card">
+            <img src="Lista/band-aid.jpg" alt="Band-aid para quando a noiva descer a lenha no noivo" class="gift-img">
+            <div class="gift-info">
+                <h3>Band-aid para quando a noiva descer a lenha no noivo</h3>
+                <p class="gift-price">R$ 150,00</p>
+                <button onclick="openPix('Band-aid para quando a noiva descer a lenha no noivo')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/lenco-rinite.webp" alt="Lenço para a rinite eterna da noiva" class="gift-img">
+            <div class="gift-info">
+                <h3>Lenço para a rinite eterna da noiva </h3>
+                <p class="gift-price">R$ 250,00</p>
+                <button onclick="openPix('Lenço para a rinite eterna da noiva')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/dose-paciencia.jpeg" alt="Dose de paciência para o noivo esperar a noiva se arrumar" class="gift-img">
+            <div class="gift-info">
+                <h3>Dose de paciência para o noivo esperar a noiva se arrumar</h3>
+                <p class="gift-price">R$ 400,00</p>
+                <button onclick="openPix('Dose de paciência para o noivo esperar a noiva se arrumar')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/cueca-elefante.jpeg" alt="Cueca sexy para a noite de núpcias" class="gift-img">
+            <div class="gift-info">
+                <h3>Cueca sexy para a noite de núpcias</h3>
+                <p class="gift-price">R$ 100,00</p>
+                <button onclick="openPix('Cueca sexy para a noite de núpcias')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/cafe.jpg" alt="Um ano de café para a noiva" class="gift-img">
+            <div class="gift-info">
+                <h3>Um ano de café para a noiva </h3>
+                <p class="gift-price">R$ 300,00</p>
+                <button onclick="openPix('Um ano de café para a noiva')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/buque.jpg" alt="Taxa para a noiva não jogar o buquê para a sua namorada" class="gift-img">
+            <div class="gift-info">
+                <h3>Taxa para a noiva não jogar o buquê para a sua namorada</h3>
+                <p class="gift-price">R$ 1.500,00</p>
+                <button onclick="openPix('Taxa para a noiva não jogar o buquê para a sua namorada')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+		
+		<div class="gift-card">
+            <img src="Lista/silvo-santos.jpg" alt="Aviãozinho de dinheiro" class="gift-img">
+            <div class="gift-info">
+                <h3>Aviãozinho de dinheiro </h3>
+                <p class="gift-price">R$ 200,00</p>
+                <button onclick="openPix('Aviãozinho de dinheiro')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/noivo-videogame.jpg" alt="Vale para a noiva deixar o noivo jogar videogame a vontade" class="gift-img">
+            <div class="gift-info">
+                <h3>Vale para a noiva deixar o noivo jogar videogame a vontade </h3>
+                <p class="gift-price">R$ 500,00</p>
+                <button onclick="openPix('Vale para a noiva deixar o noivo jogar videogame a vontade')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/noiva-buque.jpg" alt="Aumente em 30% suas chances de pegar o buquê" class="gift-img">
+            <div class="gift-info">
+                <h3>Aumente em 30% suas chances de pegar o buquê</h3>
+                <p class="gift-price">R$ 500,00</p>
+                <button onclick="openPix('Aumente em 30% suas chances de pegar o buquê')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/voucher.png" alt="Cota para perguntar quando o casal terá filhos" class="gift-img">
+            <div class="gift-info">
+                <h3>Cota para perguntar quando o casal terá filhos</h3>
+                <p class="gift-price">R$ 900,00</p>
+                <button onclick="openPix('Cota para perguntar quando o casal terá filhos')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/psicologo.webp" alt="Psicólogo para os noivos não surtarem nos preparativos" class="gift-img">
+            <div class="gift-info">
+                <h3>Psicólogo para os noivos não surtarem nos preparativos </h3>
+                <p class="gift-price">R$ 250,00</p>
+                <button onclick="openPix('Psicólogo para os noivos não surtarem nos preparativos')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/convidado-preferido.jpg" alt="Seja nosso convidado preferido" class="gift-img">
+            <div class="gift-info">
+                <h3>Seja nosso convidado preferido</h3>
+                <p class="gift-price">R$ 2.000,00</p>
+                <button onclick="openPix('Seja nosso convidado preferido')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+		
+		<div class="gift-card">
+            <img src="Lista/falar-mal.jpg" alt="Dar pitaco / falar mal da festa" class="gift-img">
+            <div class="gift-info">
+                <h3>Dar pitaco / falar mal da festa</h3>
+                <p class="gift-price">R$ 750,00</p>
+                <button onclick="openPix('Dar pitaco / falar mal da festa')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/seubarriga.jpg" alt="Um mês de aluguel dos noivos" class="gift-img">
+            <div class="gift-info">
+                <h3>Um mês de aluguel dos noivos </h3>
+                <p class="gift-price">R$ 1.500,00</p>
+                <button onclick="openPix('Um mês de aluguel dos noivos')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
+        <div class="gift-card">
+            <img src="Lista/quitar-casamento.jpg" alt="Ajude os noivos a quitarem o casamento" class="gift-img">
+            <div class="gift-info">
+                <h3>Ajude os noivos a quitarem o casamento</h3>
+                <p class="gift-price">R$ 3.000,00</p>
+                <button onclick="openPix('Ajude os noivos a quitarem o casamento')" class="gift-btn">Presentear</button>
+            </div>
+        </div>
+
     </div>
+</section>
 
-    <footer>
-        <p style="font-weight: bold;">TM Web Design</p>
-        <p style="font-style: italic;">2025</p>
-    </footer>
+<div id="pixModal" class="modal">
+    <div class="modal-content">
+        <span style="position:absolute; right:15px; top:10px; cursor:pointer; font-size:24px;" onclick="closePix()">&times;</span>
+        <h3 id="modalTitle">Presentear</h3>
+        <img src="Lista/pix-pamella-thiago.jpg" alt="QR Code PIX" class="pix-qr">
+        <p><strong>Chave PIX:</strong></p>
+        <div class="pix-key-container">
+            <span id="pixKeyText">psilva220697@gmail.com</span>
+        </div>
+        <button class="copy-btn" onclick="copyPix()">Copiar Chave PIX</button>
+        <p id="copyStatus" style="display:none; color:green; margin-top:5px;">Copiado!</p>
+    </div>
+</div>
 
+<script>
+    const modal = document.getElementById('pixModal');
+    const pixKey = "psilva220697@gmail.com"; // Altere aqui sua chave real
+
+    function openPix(itemName) {
+        document.getElementById('modalTitle').innerText = itemName;
+        modal.style.display = 'flex';
+    }
+
+    function closePix() {
+        modal.style.display = 'none';
+    }
+
+    function copyPix() {
+        navigator.clipboard.writeText(pixKey).then(() => {
+            const status = document.getElementById('copyStatus');
+            status.style.display = 'block';
+            setTimeout(() => { status.style.display = 'none'; }, 3000);
+        });
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) closePix();
+    }
+</script>
 
 </body>
-
 </html>
