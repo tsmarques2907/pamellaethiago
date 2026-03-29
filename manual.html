@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual dos Convidados - Pamella & Thiago</title>
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --secondary-color: #171a4a;
+            --accent-color: #f8f8f8;
+            --text-color: #333;
+        }
+
+        body {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            font-family: 'Playfair Display', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Container centralizado e responsivo para o manual */
+        .manual-container {
+            padding: 40px 15px;
+            max-width: 800px; /* Largura ideal para leitura de manuais em imagem */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px; /* Espaçamento entre as páginas do manual */
+        }
+
+        .manual-container img {
+            width: 100%;       /* Ocupa a largura total do container */
+            height: auto;      /* Mantém a proporção da imagem */
+            display: block;
+            border-radius: 5px; /* Leve arredondamento para acabamento */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Sombra suave para destacar do fundo */
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 30px 15px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="Imagens/logo-bg.png">
+</head>
+<body>
+
+<header>
+    <h1>Manual dos Convidados</h1>
+    <p>Pamella & Thiago</p>
+    <a href="index.html" class="back-btn">← Voltar para o início</a>
+</header>
+
+<section class="manual-container">
+    <img src="manual/manual.jpeg" alt="Página 1 do Manual">
+    <img src="manual/dresscode.jpeg" alt="Código de Vestimenta">
+</section>
+
+</body>
+</html>
