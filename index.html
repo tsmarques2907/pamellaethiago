@@ -208,7 +208,7 @@
 
 	/* Estilo para o player de áudio (opcional - pode ser escondido) */
 	.audio-player {
-		/*display: none;*/
+		display: none;
 		position: fixed;
 		bottom: 20px;
 		right: 20px;
@@ -504,10 +504,8 @@
 
 	// Controles de música
 	const music = document.getElementById('bgMusic');
-
-	/*
 	const toggleBtn = document.getElementById('musicToggle');
-	*/
+	
 
 	// Configura volume inicial (30% para ser mais discreto)
 	music.volume = 0.3;
@@ -516,7 +514,7 @@
 	function tryAutoplay() {
 		const playPromise = music.play();
 
-		/*
+		
 		if (playPromise !== undefined) {
 			playPromise.catch(error => {
 				// Autoplay bloqueado - mostra estado pausado
@@ -528,13 +526,13 @@
 				toggleBtn.title = 'Pausar música';
 			});
 		}
-			*/
+			
 	}
 
 	// Tenta o autoplay quando a página carrega
 	document.addEventListener('DOMContentLoaded', tryAutoplay);
 
-	/*
+	
 	// Botão de play/pause
 	toggleBtn.addEventListener('click', function () {
 		if (music.paused) {
@@ -552,7 +550,7 @@
 			toggleBtn.title = 'Tocar música';
 		}
 	});
-	*/
+	
 
 	// Tenta autoplay após qualquer interação do usuário
 	document.body.addEventListener('click', function firstInteraction() {
