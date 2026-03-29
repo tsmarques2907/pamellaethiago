@@ -330,7 +330,6 @@
 	}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/x-icon" href="Imagens/logo-bg.png">
 </head>
 
 <body>
@@ -423,6 +422,12 @@
 <a href="presentes.html" class="submit-btn" style="text-decoration: none; display: inline-block; width: auto; padding: 15px 40px;">Visualizar Lista de Presentes</a>
 </section>
 
+<section id="dresscode-redirect" style="text-align: center; padding: 60px 20px; background-color: #fff;">
+<h2>Manual dos Convidados / Dresscode</h2>
+<p style="margin-bottom: 30px;">Aqui você encontra o que deve fazer na nossa festa, e o que vestir para esse dia tão especial.</p>
+<a href="manual.html" class="submit-btn" style="text-decoration: none; display: inline-block; width: auto; padding: 15px 40px;">Visualizar manual</a>
+</section>
+
 <!-- Nova seção de confirmação de presença -->
 <section id="rsvp">
 	<h2>Confirmação de Presença</h2>
@@ -497,7 +502,10 @@
 
 	// Controles de música
 	const music = document.getElementById('bgMusic');
+
+	/*
 	const toggleBtn = document.getElementById('musicToggle');
+	*/
 
 	// Configura volume inicial (30% para ser mais discreto)
 	music.volume = 0.3;
@@ -506,6 +514,7 @@
 	function tryAutoplay() {
 		const playPromise = music.play();
 
+		/*
 		if (playPromise !== undefined) {
 			playPromise.catch(error => {
 				// Autoplay bloqueado - mostra estado pausado
@@ -517,11 +526,13 @@
 				toggleBtn.title = 'Pausar música';
 			});
 		}
+			*/
 	}
 
 	// Tenta o autoplay quando a página carrega
 	document.addEventListener('DOMContentLoaded', tryAutoplay);
 
+	/*
 	// Botão de play/pause
 	toggleBtn.addEventListener('click', function () {
 		if (music.paused) {
@@ -539,6 +550,7 @@
 			toggleBtn.title = 'Tocar música';
 		}
 	});
+	*/
 
 	// Tenta autoplay após qualquer interação do usuário
 	document.body.addEventListener('click', function firstInteraction() {
