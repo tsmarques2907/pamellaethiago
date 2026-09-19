@@ -24,7 +24,7 @@ Este projeto consiste na página web comemorativa e informativa criada especialm
 - **Contagem Regressiva:** Cronômetro dinâmico em JavaScript calculando o tempo restante até a data do grande dia.
 - **Informações do Evento:** Detalhes de local, horário e orientações para os convidados.
 - **Manual dos Convidados / Trajes:** Orientações visuais sobre o dress code e paleta de cores.
-- **Design Responsivo:** Leiaute adaptado para navegação fluida em smartphones, tablets e desktops.
+- **Design Responsivo:** Layout adaptado para navegação fluida em smartphones, tablets e desktops.
 
 ---
 
